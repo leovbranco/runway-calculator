@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -18,15 +18,15 @@ import { formatCurrency } from "@/lib/utils";
 const formSchema = z.object({
   monthlyRevenue: z.string().refine(
     (val) => !isNaN(Number(val.replace(/[^0-9.-]+/g, ""))),
-    "Please enter a valid number"
+    "Por favor insira um número válido"
   ),
   monthlyExpenses: z.string().refine(
     (val) => !isNaN(Number(val.replace(/[^0-9.-]+/g, ""))),
-    "Please enter a valid number"
+    "Por favor insira um número válido"
   ),
   currentBalance: z.string().refine(
     (val) => !isNaN(Number(val.replace(/[^0-9.-]+/g, ""))),
-    "Please enter a valid number"
+    "Por favor insira um número válido"
   ),
 });
 
@@ -53,8 +53,13 @@ export default function Calculator() {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <Card className="w-full max-w-lg">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold">Financial Runway Calculator</CardTitle>
+        <CardHeader className="space-y-2">
+          <CardTitle className="text-2xl font-bold">Calculadora de Runway Financeiro</CardTitle>
+          <CardDescription className="text-muted-foreground">
+            Runway é o tempo que uma empresa tem antes de ficar sem dinheiro, baseado em quanto está 
+            gastando por mês. É geralmente medido em meses e ajuda empresas a planejarem quando 
+            podem precisar de mais financiamento ou atingir a lucratividade.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -64,7 +69,7 @@ export default function Calculator() {
                 name="monthlyRevenue"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Monthly Revenue</FormLabel>
+                    <FormLabel>Receita Mensal</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
@@ -85,7 +90,7 @@ export default function Calculator() {
                 name="monthlyExpenses"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Monthly Operating Expenses</FormLabel>
+                    <FormLabel>Despesas Operacionais Mensais</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
@@ -106,7 +111,7 @@ export default function Calculator() {
                 name="currentBalance"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Current Cash Balance</FormLabel>
+                    <FormLabel>Saldo Atual em Caixa</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
@@ -124,14 +129,24 @@ export default function Calculator() {
 
               <div className="pt-4 space-y-4">
                 <div className="flex justify-between items-center py-2 border-b">
-                  <span className="font-medium">Burn Rate</span>
-                  <span className="text-lg">{formatCurrency(burnRate)}</span>
+                  <div>
+                    <span className="font-medium">Taxa de Queima (Burn Rate)</span>
+                    <p className="text-sm text-muted-foreground">Quanto dinheiro você gasta por mês além da receita</p>
+                  </div>
+                  <span className="text-lg font-semibold">{formatCurrency(burnRate)}</span>
                 </div>
 
                 <div className="flex justify-between items-center py-2 border-b">
-                  <span className="font-medium">Runway</span>
-                  <span className="text-lg">
-                    {runway.toFixed(1)} months ({runwayDate})
+                  <div>
+                    <span className="font-medium">Runway</span>
+                    <p className="text-sm text-muted-foreground">Por quanto tempo seu dinheiro vai durar no ritmo atual</p>
+                  </div>
+                  <span className="text-lg font-semibold">
+                    {runway === Infinity ? "∞" : `${runway.toFixed(1)} meses`}
+                    <br />
+                    <span className="text-sm text-muted-foreground">
+                      {runwayDate === "∞" ? "(Fluxo de caixa positivo)" : `(até ${runwayDate})`}
+                    </span>
                   </span>
                 </div>
 
@@ -141,7 +156,7 @@ export default function Calculator() {
                   className="w-full"
                   onClick={onReset}
                 >
-                  Clear
+                  Limpar
                 </Button>
               </div>
             </div>
