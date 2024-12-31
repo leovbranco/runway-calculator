@@ -10,6 +10,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  FormDescription,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useCalculate } from "@/hooks/use-calculate";
@@ -70,6 +71,9 @@ export default function Calculator() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Receita Mensal</FormLabel>
+                    <FormDescription>
+                      Sua receita mensal total.
+                    </FormDescription>
                     <FormControl>
                       <Input
                         {...field}
@@ -91,6 +95,9 @@ export default function Calculator() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Despesas Operacionais Mensais</FormLabel>
+                    <FormDescription>
+                      Total de despesas operacionais mensais.
+                    </FormDescription>
                     <FormControl>
                       <Input
                         {...field}
@@ -112,6 +119,9 @@ export default function Calculator() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Saldo Atual em Caixa</FormLabel>
+                    <FormDescription>
+                      Saldo atual disponível em caixa.
+                    </FormDescription>
                     <FormControl>
                       <Input
                         {...field}
