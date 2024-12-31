@@ -142,19 +142,9 @@ export default function Calculator() {
                     <p className="text-sm text-muted-foreground">Por quanto tempo seu dinheiro vai durar no ritmo atual</p>
                   </div>
                   <div className="text-right">
-                    <span className="text-2xl font-bold">
-                      {runway === Infinity ? "∞" : `${Math.floor(runway)} meses`}
+                    <span className="text-lg">
+                      {Math.floor(runway)} meses ({runwayDate})
                     </span>
-                    {runway !== Infinity && runway % 1 !== 0 && (
-                      <span className="text-lg ml-1">
-                        e {Math.round((runway % 1) * 30)} dias
-                      </span>
-                    )}
-                    {runwayDate !== "∞" && (
-                      <p className="text-sm text-muted-foreground mt-1">
-                        Acabará em {runwayDate}
-                      </p>
-                    )}
                   </div>
                 </div>
 
