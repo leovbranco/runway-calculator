@@ -133,7 +133,7 @@ export default function Calculator() {
                     <span className="font-medium">Taxa de Queima (Burn Rate)</span>
                     <p className="text-sm text-muted-foreground">Quanto dinheiro você gasta por mês além da receita</p>
                   </div>
-                  <span className="text-lg font-semibold">{formatCurrency(burnRate)}</span>
+                  <span className="text-lg font-semibold">{formatCurrency(burnRate)}/mês</span>
                 </div>
 
                 <div className="flex justify-between items-center py-2 border-b">
@@ -141,13 +141,21 @@ export default function Calculator() {
                     <span className="font-medium">Runway</span>
                     <p className="text-sm text-muted-foreground">Por quanto tempo seu dinheiro vai durar no ritmo atual</p>
                   </div>
-                  <span className="text-lg font-semibold">
-                    {runway === Infinity ? "∞" : `${runway.toFixed(1)} meses`}
-                    <br />
-                    <span className="text-sm text-muted-foreground">
-                      {runwayDate === "∞" ? "(Fluxo de caixa positivo)" : `(até ${runwayDate})`}
+                  <div className="text-right">
+                    <span className="text-2xl font-bold">
+                      {runway === Infinity ? "∞" : `${Math.floor(runway)} meses`}
                     </span>
-                  </span>
+                    {runway !== Infinity && runway % 1 !== 0 && (
+                      <span className="text-lg ml-1">
+                        e {Math.round((runway % 1) * 30)} dias
+                      </span>
+                    )}
+                    {runwayDate !== "∞" && (
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Acabará em {runwayDate}
+                      </p>
+                    )}
+                  </div>
                 </div>
 
                 <Button
