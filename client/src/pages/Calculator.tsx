@@ -131,7 +131,7 @@ export default function Calculator() {
                 <div className="flex justify-between items-center py-2 border-b">
                   <div>
                     <span className="font-medium">Taxa de Queima (Burn Rate)</span>
-                    <p className="text-sm text-muted-foreground">Quanto dinheiro você gasta por mês além da receita</p>
+                    <p className="text-sm text-muted-foreground">Quanto dinheiro você gasta por mês além da receita.</p>
                   </div>
                   <span className="text-lg font-semibold">{formatCurrency(burnRate)}/mês</span>
                 </div>
@@ -139,7 +139,7 @@ export default function Calculator() {
                 <div className="flex justify-between items-center py-2 border-b">
                   <div>
                     <span className="font-medium">Runway</span>
-                    <p className="text-sm text-muted-foreground">Por quanto tempo seu dinheiro vai durar no ritmo atual</p>
+                    <p className="text-sm text-muted-foreground">Por quanto tempo seu dinheiro vai durar no ritmo atual.</p>
                   </div>
                   <div className="text-right">
                     <span className="text-lg">
