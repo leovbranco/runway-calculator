@@ -14,7 +14,7 @@ export function useCalculate({ monthlyRevenue, monthlyExpenses, currentBalance }
     const runway = burnRate <= 0 ? 400 : currentBalance / burnRate;
     const runwayDate = format(
       add(new Date(), { months: Math.floor(runway) }), 
-      "MM/dd/yyyy"
+      "dd/MM/yyyy"
     );
 
     return {
