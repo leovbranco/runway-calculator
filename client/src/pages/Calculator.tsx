@@ -73,7 +73,7 @@ export default function Calculator() {
                     <FormControl>
                       <Input
                         {...field}
-                        placeholder="0.00"
+                        placeholder="R$ 10.000"
                         onChange={(e) => {
                           const value = e.target.value.replace(/[^0-9.-]+/g, "");
                           field.onChange(formatCurrency(value));
@@ -94,7 +94,7 @@ export default function Calculator() {
                     <FormControl>
                       <Input
                         {...field}
-                        placeholder="0.00"
+                        placeholder="R$ 5.000"
                         onChange={(e) => {
                           const value = e.target.value.replace(/[^0-9.-]+/g, "");
                           field.onChange(formatCurrency(value));
@@ -115,7 +115,7 @@ export default function Calculator() {
                     <FormControl>
                       <Input
                         {...field}
-                        placeholder="0.00"
+                        placeholder="R$ 100.000"
                         onChange={(e) => {
                           const value = e.target.value.replace(/[^0-9.-]+/g, "");
                           field.onChange(formatCurrency(value));
